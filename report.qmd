@@ -23,12 +23,14 @@ Can we use the `choice` value on chunk options?
 #| echo: !expr choice
 
 #  If choice is TRUE, we should show this
+# since I have #| echo: !expr choice on this chunk
 ```
 
 ```{r}
 #| echo: !expr (!choice)
 
 #  If choice is FALSE, we should show this
+# since I have #| echo: !expr (!choice) on this chunk
 ```
 
 We can use a variable with the `#| echo` option without raising an error.
@@ -37,8 +39,8 @@ We can use a variable with the `#| echo` option without raising an error.
 #| eval: !expr choice
 
 #  If choice is TRUE, we should evaluate this
-# but raises and error 
-# Error in eval(x, envir = envir) : object 'choice' not found
+# since I have #| eval: !expr choice on this chunk
+# but raises and error: Error in eval(x, envir = envir) : object 'choice' not found
 1 + 1 == 2
 ```
 
@@ -46,6 +48,7 @@ We can use a variable with the `#| echo` option without raising an error.
 #| eval: !expr (!choice)
 
 # This should only get evaluated if choice is FALSE
+# since I have #| eval: !expr (!choice) on this chunk
 # but also raises an error when issuing tar_make()
 # Error in eval(x, envir = envir) : object 'choice' not found
 1 + 1 == 3
@@ -54,7 +57,10 @@ We can use a variable with the `#| echo` option without raising an error.
 ```{r}
 #| eval: !expr (!tar_read(choice))
 
-# If choice is FALSE, we should see evaluate this
+# If choice is FALSE, we should evaluate this
+# since I have
+#| eval: !expr (!tar_read(choice))
+#| # this does not raise an error
 1 + 1 == 3
 ```
 
