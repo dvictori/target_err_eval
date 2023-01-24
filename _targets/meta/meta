@@ -1,0 +1,4 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+choice|stem|976b5984c138c56f|5cd3fac8a563f764|ef46db3751d8e999|125733742||t19374.6256009342s|ac45463db19e2cbe|48|rds|local|vector|||0.005||
+data|stem|6afcb05a96a54f6c|43fae4011a0626f4|136bf5e07fbd9b1c|1588979285||t19374.6189241656s|d07e2e962de596ec|1750|rds|local|vector|||0.002||
+report|stem|89a1fb1c9d8063e1|81e54eb24fd6816f|af01e6f8958bd274|-237041703|report.html*report.qmd|t19374.7777388619s||665034|file|local|vector|||0.063||pandoc version 1.12.3 or higher is required and was not found see the help page rmarkdownpandoc_available.

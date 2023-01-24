@@ -1,0 +1,61 @@
+---
+title: "test_report"
+format: html
+editor: visual
+---
+
+Can we get data generated on the target workflow?
+
+We can plot the data:
+
+```{r}
+library(targets)
+tar_load(data)
+tar_load(choice)
+plot(data$x, data$y)
+```
+
+We can see the choice value is **`r choice`**
+
+Can we use the `choice` value on chunk options?
+
+```{r}
+#| echo: !expr choice
+
+#  If choice is TRUE, we should show this
+```
+
+```{r}
+#| echo: !expr (!choice)
+
+#  If choice is FALSE, we should show this
+```
+
+We can use a variable with the `#| echo` option without raising an error.
+
+```{r}
+#| eval: !expr choice
+
+#  If choice is TRUE, we should evaluate this
+# but raises and error 
+# Error in eval(x, envir = envir) : object 'choice' not found
+1 + 1 == 2
+```
+
+```{r}
+#| eval: !expr (!choice)
+
+# This should only get evaluated if choice is FALSE
+# but also raises an error when issuing tar_make()
+# Error in eval(x, envir = envir) : object 'choice' not found
+1 + 1 == 3
+```
+
+```{r}
+#| eval: !expr (!tar_read(choice))
+
+# If choice is FALSE, we should see evaluate this
+1 + 1 == 3
+```
+
+Take home: we can use a loaded variable in `#| echo !expr` option. But for `#| eval !expr` we must read the variable using `tar_read()`
